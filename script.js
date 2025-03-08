@@ -1,20 +1,21 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const list = document.getElementById("infi-list"); // Make sure the ID matches
+//your code here!
+let main=document.querySelector('main');
+let ol = document.getElementById('infi-list');
 
-    function addListItems(count) {
-        for (let i = 0; i < count; i++) {
-            const listItem = document.createElement("li");
-            listItem.textContent = `Item ${list.children.length + 1}`;
-            list.appendChild(listItem);
-        }
-    }
+for (let i = 1; i <= 10; i++) {
+  ol.innerHTML += `<li>item ${i}</li>`;
+}
 
-    // Add initial 10 list items
-    addListItems(10);
+function addItems() {
+  let currentLength = ol.children.length;
+	ol.innerHTML+=`
+	<li>item ${currentLength + 1}</li>
+	<li>item ${currentLength + 2}</li>
+	`
+}
 
-    list.addEventListener("scroll", function () {
-        if (list.scrollTop + list.clientHeight >= list.scrollHeight - 5) {
-            addListItems(2); // Add 2 more items when reaching the bottom
-        }
-    });
+ol.addEventListener('scroll', () => {
+  if (ol.scrollTop + ol.clientHeight >= ol.scrollHeight-10 ) {
+    addItems();
+  }
 });
